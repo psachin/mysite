@@ -1,0 +1,9 @@
+Django==1.7
+dj-database-url==0.3.0
+flake8==2.2.5
+gunicorn==19.1.1
+mccabe==0.2.1
+pyflakes==0.8.1
+whitenoise==1.0.4
+wsgiref==0.1.2
+psycopg==2.5.3
