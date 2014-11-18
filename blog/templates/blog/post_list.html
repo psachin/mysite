@@ -4,8 +4,7 @@
 {% for post in posts %}
 <div class="post">
   <p>published: {{post.published_date}}</p>
-  <h1><a href="">{{post.title}}</a></h1>
-  <p>{{post.text|linebreaks}}</p>
+  <h1><a href="{% url 'blog.views.post_details' pk=post.pk %}">{{post.title}}</a></h1>
 </div>
 {% endfor %}
 {% endblock content %}
