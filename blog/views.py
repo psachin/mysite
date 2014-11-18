@@ -36,3 +36,20 @@ def post_new(request):
 
     query_dict = {'form': form,}
     return render(request, 'blog/post_edit.html', query_dict)
+
+
+def post_edit(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('blog.views.post_details', pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+
+    query_dict = {'form': form,}
+    return render(request, 'blog/post_edit.html', query_dict)
+
