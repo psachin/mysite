@@ -1,7 +1,12 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+
+{% if form.title.value == None %}
 <h1>New post</h1>
+{% else %}
+<h1> Edit post</h1>
+{% endif %}
 <form method='POST' class="post-form">
   {% csrf_token %}
   {{form.as_p}}
