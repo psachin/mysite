@@ -36,7 +36,7 @@ def post_new(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            post.publish()
+            post.publish()      # TODO: Should be selected by user
             return redirect('blog.views.post_details', pk=post.pk)
     else:
         form = PostForm()

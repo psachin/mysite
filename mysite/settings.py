@@ -95,4 +95,4 @@ STATICFILES_DIRS = (
 try:
     from local_settings import *
 except ImportError:
-    pass
+    print "Error: Cannot import local setting. File not found."
