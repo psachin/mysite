@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 
 class Blog(models.Model):
@@ -28,7 +29,7 @@ class Post(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(blank=True, null=True)
-
+    tags = TaggableManager()
 
     def publish(self):
         self.published_date = timezone.now()

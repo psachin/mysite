@@ -37,6 +37,7 @@ def post_new(request):
             post.author = request.user
             post.save()
             post.publish()      # TODO: Should be selected by user
+            post.save_m2m()
             return redirect('blog.views.post_details', pk=post.pk)
     else:
         form = PostForm()
@@ -56,6 +57,7 @@ def post_edit(request, pk):
             post.author = request.user
             post.save()
             post.publish()
+            post.save_m2m()
             return redirect('blog.views.post_details', pk=post.pk)
     else:
         form = PostForm(instance=post)
